@@ -24,16 +24,16 @@
 * D1 : TX rs232 non utilise
 * D2 : NC
 * D3 : NC
-* D4 : NC
+* D4 : SS Shield-Ethernet-Arduino SD
 * D5 : NC
 * D6 : NC
 * D7 : NC
 * D8 : NC
 * D9 : NC
-* D10 : NC
-* D11 : NC
-* D12 : NC
-* D13 : NC 
+* D10 : SS Shield-Ethernet-Arduino
+* D11 : MOSI Shield-Ethernet-Arduino
+* D12 : MISO Shield-Ethernet-Arduino
+* D13 : SCK Shield-Ethernet-Arduino
 
 ### I2C
 * SDA : NC
