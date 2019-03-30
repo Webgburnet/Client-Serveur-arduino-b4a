@@ -6,9 +6,9 @@
 | ![](/icone/Arduino.png) | ![](/icone/Fritzing.png) | ![](/icone/B4A.png) | ![](/icone/AppInventor.png) | ![](/icone/Android.png) ||
 
 ## Composants
-| Arduino | Adafruit | DFRobot | SeeedStudio | 4D Systems|
-| :-----: | :------: | :-----: | :---------: | :-------: |
-| ![](/icone/Arduino.png) | ![](/icone/Adafruit.png)| ![](/icone/DFRobot.png) | ![](/icone/Seeed_Studio.png) | ![](/icone/4D_Systems.png) |
+| Arduino |
+| :-----: |
+| ![](/icone/Arduino.png) | 
 
 ### Arduino
 | Arduino Mega  | Arduino Uno |
