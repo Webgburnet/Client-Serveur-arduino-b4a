@@ -1,32 +1,34 @@
-#include <Ethernet.h>
-#include <EthernetUdp.h>
+//Shield Ethernet sans le POE
+ #include <Ethernet.h>
+ #include <EthernetUdp.h>
+ #include <SPI.h>         // needed for Arduino versions later than 0018
 
-#include <Wire.h> 
-#include <rgb_lcd.h>
-
-#include <SPI.h>         // needed for Arduino versions later than 0018
-
-rgb_lcd lcd;
-const int colorR = 255;
-const int colorG = 0;
-const int colorB = 0;
-
-byte mac[]={0x90,0xA2,0xDA,0x0F,0x2C,0x28};
+byte mac[]={0x90,0xA2,0xDA,0x10,0xE8,0x9B};
 IPAddress ip_shield(192,168,1,205);
-
+int ports = 5500;
 EthernetUDP UDP;
+
+int vitesse_transmission=9600;
 
 void setup()
 {
-  lcd.begin(16, 2);
-  lcd.setRGB(colorR, colorG, colorB);                      
-  lcd.print("Hello, world!");
-  lcd.setCursor(0,1);
-  lcd.print(ip_shield);
-  delay(8000);
-  lcd.clear();
+  Serial.begin(vitesse_transmission);
   Ethernet.begin(mac,ip_shield);
-  UDP.begin(5500);
+  UDP.begin(ports);
+  Serial.println("Activite UDP arduino - b4a");
+  Serial.print("Adresse IP : ");
+  Serial.print(Ethernet.localIP());
+  Serial.print(" Adresse MAC : ");
+  byte macBuffer[6];
+  Ethernet.MACAddress(macBuffer);
+  for (byte octet = 0; octet < 6; octet++) 
+  {
+    Serial.print(macBuffer[octet], HEX);
+    if (octet < 5) 
+    {
+      Serial.print(':');
+    }
+  }
 }
 
 void loop()
@@ -34,16 +36,11 @@ void loop()
   int Size=UDP.parsePacket();
   if (Size>0)
   {
-    lcd.clear();
     char message[Size];
     String message2;
     UDP.read(message,Size);
     message2=message;
-    lcd.setCursor(0,0);
-    lcd.print("Le message est : ");
-    lcd.setCursor(0,1);
-    lcd.print(message);
+    Serial.print("Le message est :");
+    Serial.println(message2);
   }
 }
-
-
